@@ -1,7 +1,10 @@
+import cProfile
+from memory_profiler import profile
 from statistics import Statistics
 from plot_creator import PlotCreator
 
 
+@profile
 def main():
     url = 'https://ai-process-sandy.s3.eu-west-1.amazonaws.com/purge/deviation.json'
 
@@ -50,7 +53,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    cProfile.run('main()')
 
 
 

@@ -28,8 +28,10 @@ class Statistics:
         print(f'Среднеквадратичная ошибка (MSE): {mse:.2f}')
         if mae == 0 and mse == 0:
             print('Модель успешно справилась с вычислением количества углов', '\n', '=' * 100)
+            return True
         else:
             print('Модель вычислила количество углов с некоторыми погрешностями', '\n', '=' * 100)
+            return False
 
     def shapiro_test(self, column):
         # Тест Шапиро-Уилка
@@ -71,6 +73,9 @@ class Statistics:
         table_value = scipy.stats.t.ppf(0.975, dfs)
         if t_statistic.statistic < table_value:
             print('Средние двух выборок равны при условии их нормального распределения', '\n', '=' * 100)
+            return True
+        else:
+            return False
 
     def line_regression(self, dependent_column, independent_columns):
         # Линейная регрессия
